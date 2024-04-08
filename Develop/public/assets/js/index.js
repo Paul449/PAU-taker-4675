@@ -6,28 +6,28 @@ let newNoteBtn;
 let noteList;
 
 if (window.location.pathname === '/notes') {
-  noteForm = document.querySelector('.note-form');
-  noteTitle = document.querySelector('.note-title');
-  noteText = document.querySelector('.note-textarea');
-  saveNoteBtn = document.querySelector('.save-note');
-  newNoteBtn = document.querySelector('.new-note');
-  clearBtn = document.querySelector('.clear-btn');
-  noteList = document.querySelectorAll('.list-container .list-group');
+  noteForm = document.querySelector('.note-form'); //targets both textareas(Note Title and Note Text)
+  noteTitle = document.querySelector('.note-title'); // targets specifically the Note Title textarea
+  noteText = document.querySelector('.note-textarea'); // targets specifically the note's text textarea
+  saveNoteBtn = document.querySelector('.save-note'); //targets the save note button
+  newNoteBtn = document.querySelector('.new-note'); // targets the new note button
+  clearBtn = document.querySelector('.clear-btn'); // targets the clear form button
+  noteList = document.querySelectorAll('.list-container .list-group'); // targets the note list located on the left-hand column
 }
 
-// Show an element
+// function which allow us to show an element
 const show = (elem) => {
   elem.style.display = 'inline';
 };
 
-// Hide an element
+// function which allow us to hide an element
 const hide = (elem) => {
   elem.style.display = 'none';
 };
 
 // activeNote is used to keep track of the note in the textarea
-let activeNote = {};
-
+let activeNote = {}; //text entered when typing on the textareas, for example; showing buttons on the top-right of the navigation bar
+// function refering to the "new note" button
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -35,7 +35,7 @@ const getNotes = () =>
       'Content-Type': 'application/json'
     }
   });
-
+// function refering to the "save note" button
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -54,8 +54,8 @@ const deleteNote = (id) =>
   });
 
 const renderActiveNote = () => {
-  hide(saveNoteBtn);
-  hide(clearBtn);
+  hide(saveNoteBtn); // hide function to hide "save note button"
+  hide(clearBtn); //hide function to hide "clear form button"
 
   if (activeNote.id) {
     show(newNoteBtn);
