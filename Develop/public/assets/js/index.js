@@ -26,7 +26,7 @@ const hide = (elem) => { // adding a button as argument
 };
 
 // activeNote is used to keep track of the note in the textarea
-let activeNote = {}; //text entered when typing on the textareas, for example; showing buttons on the top-right of the navigation bar
+let activeNote = {}; //
 // function refering to the "new note" button
 const getNotes = () => 
   fetch('/api/notes', { // notes refers to a collection
@@ -44,7 +44,7 @@ const saveNote = (note) =>
     },
     body: JSON.stringify(note)
   });
-
+//this function targets the icons located on the saved notes
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -83,7 +83,7 @@ const handleNoteSave = () => {
   });
 };
 
-// Delete the clicked note
+// Delete the clicked note (the icon trashcan)
 const handleNoteDelete = (e) => {
   // Prevents the click listener for the list from being called when the button inside of it is clicked
   e.stopPropagation();
