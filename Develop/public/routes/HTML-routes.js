@@ -3,7 +3,7 @@ const Router = require('express').Router();
 const path = require('path'); // locating and adding html files from develop folder
 //HTML routes
 //GET /notes should return the notes.html file.
-Router.get('/',(req,res,next)=>{
+Router.get('/',(req,res)=>{
 
 })
 
