@@ -6,6 +6,10 @@ const fs = require('fs');
 //importing path library
 const path = 'db.json';
 //reading db.json
+function ReadFile(){
+
+}
+
 Router.get('api/notes',async(req,res)=>{
     try{
 
@@ -13,6 +17,11 @@ Router.get('api/notes',async(req,res)=>{
 
     }
 });
+
+//creating note
+function writeFile(){
+    
+}
 
 //POST /api/notes
 
