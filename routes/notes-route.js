@@ -11,25 +11,29 @@ const db = require('../db/db.json');
 //reading db.json
 async function ReadFile(){
     try{
-        const Data = fs.readFileSync(db,"utf-8");
+        const Data = fs.readFile(path.join(__dirname,db.notes),"utf-8");
         console.log('dataDB',Data)
     }catch(error){
         console.error("An error has ocurred:",error)
     }
 }
-ReadFile()
-Router.get('api/notes',async(req,res)=>{
-   
+readFile();
+//route for reading created note
+Router.get('/notes',async(req,res)=>{
+  res.send(ReadFile);
 });
 
 //creating note
-function writeFile(){
+async function writeFile(){
+    try{
+        let Note = fs.writeFile(path.join(__dirname,db))
+    }catch(error){
 
+    }
 }
-
+writeFile();
 //POST /api/notes
-
-Router.post('api/notes',async(req,res)=>{
+Router.post('/notes',async(req,res)=>{
 
 })
 
