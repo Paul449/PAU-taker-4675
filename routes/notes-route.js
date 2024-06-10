@@ -5,7 +5,6 @@ const Router = require('express').Router();
 const fs = require('fs').promises;
 //importing path library
 const path = require('path');
-//string JSON
 //reading db.json
 async function ReadFile(){
     try{
