@@ -8,10 +8,12 @@ const path = require('path');
 const fs = require('fs');
 //assigning port number
 const PORT = process.env.PORT || 3003;
-//
-
+//Notes Routes
+const NotesRoutes = require('./routes/index');
 //setting middleware to parse request
+app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,"public")));
+app.use(NotesRoutes);
 //test middleware
 app.get('/',(req,res)=>{
     res.sendFile('index.html')

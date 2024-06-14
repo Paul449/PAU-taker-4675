@@ -5,12 +5,14 @@ const Router = require('express').Router();
 const fs = require('fs').promises;
 //importing path library
 const path = require('path');
+//Notes
+const dbJson = path.join(__dirname,'../db/db.json')
 //reading db.json
 async function ReadFile(){
     try{
-        const Data = fs.readFile(path.join(__dirname,'../db/db.json'),"utf-8");
-        console.log('dataDB',Data)
-        return JSON.parse(Data); 
+        const Data = await fs.readFile(dbJson,"utf-8");
+        return JSON.parse(Data)
+       // console.log('dataDB',Data)
     }catch(error){
         console.error("An error has ocurred:",error);
     }
@@ -24,7 +26,7 @@ Router.get('/notes',async(req,res)=>{
 //creating note
 async function writeFile(data){
     try{
-        await fs.writeFile(path.join(__dirname,'../db/db.json'),JSON.stringify(data))
+        await fs.writeFile(dbJson,JSON.stringify(data))
     }catch(error){
         console.error('An error has ocurred:',error);
     }
@@ -36,6 +38,11 @@ let Notes = await writeFile();
 Notes.push(NoteBody);
 await writeFile(Notes);
 res.json(NoteBody);
+})
+
+//Delete /api/notes
+Router.delete('/notes/:id',async(req,res)=>{
+let deleteNote = req.params.id;
 })
 
 module.exports = Router;
