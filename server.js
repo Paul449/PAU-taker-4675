@@ -10,14 +10,13 @@ const fs = require('fs');
 const PORT = process.env.PORT || 3003;
 //Notes Routes
 const NotesRoutes = require('./routes/index');
-//html route
-const HTMLRoutes = require('./routes/HTML-route');
 //setting middleware to parse request
+app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,"public")));
 app.use(NotesRoutes);
 //test middleware
 app.get('/',(req,res)=>{
-    res.sendFile('index.html')
+    res.sendFile('public/index.html')
 });
 app.get('/notes',(req,res)=>{
     res.sendFile(path.join(__dirname,'public/notes.html'))

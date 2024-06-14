@@ -18,7 +18,7 @@ async function ReadFile(){
     }
 }
 //route for reading created note
-Router.get('/notes',async(req,res)=>{
+Router.get('/api/notes',async(req,res)=>{
   let Notes = await ReadFile();
   res.send(Notes);
 });
@@ -32,7 +32,7 @@ async function writeFile(data){
     }
 }
 //POST /api/notes
-Router.post('/notes',async(req,res)=>{
+Router.post('/api/notes',async(req,res)=>{
 let NoteBody = req.body;
 let Notes = await writeFile();
 Notes.push(NoteBody);
@@ -41,7 +41,7 @@ res.json(NoteBody);
 })
 
 //Delete /api/notes
-Router.delete('/notes/:id',async(req,res)=>{
+Router.delete('/api/notes/:id',async(req,res)=>{
 let deleteNote = req.params.id;
 })
 
