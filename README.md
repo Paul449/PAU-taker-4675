@@ -28,7 +28,7 @@ The purpose of this application is for busy people who wants to keep their daily
 
  ## Deployment
 
- Heroku Link
+ Heroku Link: https://pau-taker4675-bf4fa868c79b.herokuapp.com/
 
  ## Github Repository
 
