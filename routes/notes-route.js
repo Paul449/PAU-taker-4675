@@ -33,17 +33,17 @@ async function writeFile(data){
 }
 //POST /api/notes
 Router.post('/api/notes',async(req,res)=>{
-let NoteBody = req.body;
-let Notes = await ReadFile();
-Notes.push(NoteBody);
-await writeFile(Notes);
-res.json(NoteBody);
-})
+    try{
+        let NoteBody = req.body;
+        let Notes = await ReadFile();
+        Notes.push(NoteBody);
+        await writeFile(Notes);
+        res.send(NoteBody);
+    }catch(error){
+        console.error('something unexpectedly happened',error)
+    }
 
-//Delete /api/notes
-/*
-Router.delete('/api/notes/:id',async(req,res)=>{
-let deleteNote = req.params.id;
 })
-*/
+/*delete note by id */
+
 module.exports = Router;
