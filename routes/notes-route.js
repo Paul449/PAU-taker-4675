@@ -34,15 +34,16 @@ async function writeFile(data){
 //POST /api/notes
 Router.post('/api/notes',async(req,res)=>{
 let NoteBody = req.body;
-let Notes = await writeFile();
+let Notes = await ReadFile();
 Notes.push(NoteBody);
 await writeFile(Notes);
 res.json(NoteBody);
 })
 
 //Delete /api/notes
+/*
 Router.delete('/api/notes/:id',async(req,res)=>{
 let deleteNote = req.params.id;
 })
-
+*/
 module.exports = Router;
